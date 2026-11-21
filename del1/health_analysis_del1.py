@@ -14,6 +14,9 @@ Datum: 2024
 Python version: 3.14.3
 """
 
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,6 +25,9 @@ from scipy import stats
 
 # Sätt seed för reproducerbarhet
 np.random.seed(42)
+
+# Kör relativt scriptets mapp så att ../data och ../output alltid hittas
+os.chdir(Path(__file__).resolve().parent)
 
 # Läs in datasetet
 file_path = '../data/health_study_dataset.csv'
@@ -67,7 +73,7 @@ print("Sparad som: ../output/del1_histogram_blodtryck.png")
 # Graf 2: Boxplot över vikt per kön
 print("\nSkapar Graf 2: Boxplot över vikt per kön...")
 plt.figure(figsize=(10, 6))
-sns.boxplot(x='sex', y='weight', data=df, palette='pastel')
+sns.boxplot(x='sex', y='weight', hue='sex', data=df, palette='pastel', legend=False)
 plt.title('Boxplot: Vikt per kön')
 plt.xlabel('Kön')
 plt.ylabel('Vikt (kg)')
@@ -212,7 +218,7 @@ plt.plot(x, pdf, 'r-', linewidth=2, label='Normalfördelning')
 # Märk ut konfidensintervall
 plt.axvline(ci_lower_bootstrap, color='blue', linestyle='--', label='95% CI (Bootstrap)')
 plt.axvline(ci_upper_bootstrap, color='blue', linestyle='--')
-plt.axvline(systolic_bp_mean, color='black', linestyle='-', label='Sannt medelvärde')
+plt.axvline(systolic_bp_mean, color='black', linestyle='-', label='Stickprovsmedelvärde')
 
 plt.title('Bootstrap-fördelning av medelvärde för systolic_bp')
 plt.xlabel('Medelvärde (mmHg)')
@@ -337,8 +343,8 @@ for _ in range(n_sim):
     smokers_sample = np.random.normal(non_smokers.mean() + true_diff, pooled_std, n_smokers_sim)
     non_smokers_sample = np.random.normal(non_smokers.mean(), pooled_std, n_non_smokers_sim)
     
-    # T-test
-    t_stat_sim, p_val_sim = stats.ttest_ind(smokers_sample, non_smokers_sample, equal_var=True)
+    # T-test (en-sidig, samma som hypotesen)
+    t_stat_sim, p_val_sim = stats.ttest_ind(smokers_sample, non_smokers_sample, equal_var=True, alternative='greater')
     power_results.append(p_val_sim)
     if p_val_sim < alpha:
         power_count += 1
