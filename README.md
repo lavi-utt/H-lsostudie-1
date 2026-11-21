@@ -23,7 +23,7 @@ health_study_project/
 │   └── health_study_dataset.csv  # Dataset (800 participants)
 ├── del1/                   # Del 1 files
 │   └── health_analysis_del1.py   # Basic analysis script
-└── output/                 # Generated visualizations (ignored)
+└── output/                 # Generated visualizations (PNG)
 ```
 
 ## Del 1 Requirements
@@ -112,6 +112,15 @@ The Del 1 script (`health_analysis_del1.py`) performs:
    - Method motivation (VG)
    - References to statistical theory
 
+## Graphs
+
+| | |
+|---|---|
+| ![Histogram över blodtryck](output/del1_histogram_blodtryck.png) | ![Boxplot vikt per kön](output/del1_boxplot_vikt_per_kon.png) |
+| ![Andel rökare](output/del1_barplot_rokare.png) | ![Simulering sjukdom](output/del1_simulering_sjukdom.png) |
+| ![Bootstrap-fördelning](output/del1_bootstrap_forelning.png) | ![Permutationstest](output/del1_permutationstest.png) |
+| ![Power-analys](output/del1_power_analys.png) | |
+
 ## Key Features
 
 ### Reproducibility
@@ -151,7 +160,7 @@ To submit your work:
 ## Notes
 
 - The `.venv` directory is excluded via `.gitignore`
-- The `output/` directory is excluded via `.gitignore`
+- The generated graphs in `output/` are included in the repository
 - All Python scripts use UTF-8 encoding
 - All visualizations are saved as PNG files
 
@@ -163,4 +172,4 @@ For questions or issues, please refer to the assignment instructions or contact 
 
 **Project created:** November 2024  
 **Python version:** 3.14.3  
-**Author:** [Your Name]
+**Author:** lavi-utt

@@ -9,7 +9,7 @@ Denna script utför grundläggande analys av hälsostudiedata inklusive:
 - Konfidensintervall
 - Hypotesprövning
 
-Författare: [Ditt Namn]
+Författare: lavi-utt
 Datum: 2024
 Python version: 3.14.3
 """
