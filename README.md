@@ -170,6 +170,6 @@ For questions or issues, please refer to the assignment instructions or contact 
 
 ---
 
-**Project created:** November 2024  
+**Project created:** November 2026  
 **Python version:** 3.14.3  
 **Author:** lavi-utt

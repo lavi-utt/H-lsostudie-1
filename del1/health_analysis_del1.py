@@ -10,7 +10,7 @@ Denna script utför grundläggande analys av hälsostudiedata inklusive:
 - Hypotesprövning
 
 Författare: lavi-utt
-Datum: 2024
+Datum: 2026
 Python version: 3.14.3
 """
 
